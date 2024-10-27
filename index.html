@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR Code Generator</h1>
+  <input type="text" id="urlInput" placeholder="Type in your URL">
+  <button onclick="generateQRCode()">Generate QR Code</button>
+  <div id="qrCode"></div>
+
+  <script src="qrcode.min.js"></script>
+  <script>
+    function generateQRCode() {
+      var url = document.getElementById("urlInput").value;
+      if (url) {
+        var qrCodeDiv = document.getElementById("qrCode");
+        qrCodeDiv.innerHTML = ""; // Wyczyść poprzedni kod QR, jeśli istnieje
+
+        var qrcode = new QRCode(qrCodeDiv, {
+          text: url,
+          width: 128,
+          height: 128,
+        });
+      }
+    }
+  </script>
+</body>
+</html>
